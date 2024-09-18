@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>INST 377 - Lab 4</title>
+    </head>
+    <style>
+        h1 {
+            background-color:antiquewhite;
+            text-align:center;
+            text-decoration:underline;
+        }
+        body {
+            background-color:antiquewhite;
+        }
+
+        .mainArea {
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            gap: 20px;
+        }
+
+        .box {
+            background-color: navy;
+            color: white;
+            border-radius: 10px;
+            border: 10px solid yellow;
+            padding:70px;
+            text-align: center;
+            font-weight:bold;
+        }
+
+        button {
+            padding: 10px;
+            background-color: yellow;
+            font-weight:bold;
+        }
+    </style>
+
+    <h1> INST 377 - Lab 4</h1>
+
+    <body>
+        <div class="mainArea">
+            <div class="box">
+                <form name="nameForm" method="get" onsubmit="nameAlert()">
+                    <label for="Name"> Name: </label>
+                    <input type="text" id="Name" required>
+                    <button type="submit"> Alert Me!</button>
+                </form>
+            </div>
+            <div class="box">
+                <button onclick="changeColor()">Change Color</button>
+            </div>
+            <div class="box">
+                <form name="nameForm" method="get" onsubmit="textCheck()">
+                    <label for="text"> Validate Text: </label>
+                    <input type="text" id="text">
+                    <button type="submit"> Validate Text</button>
+                </form>
+            </div>
+            <div class="box">
+                <button onclick="addText()">Add Text:</button>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function nameAlert() {
+                alert("Hello "+ document.getElementById("Name").value +"!")
+            }
+
+            function changeColor() {
+                if(document.body.style.backgroundColor == 'antiquewhite') {
+                    document.body.style.backgroundColor = 'orange';
+                } else {
+                    document.body.style.backgroundColor = 'antiquewhite';
+                }
+            }
+            
+            function textCheck() {
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                if (validation.test(document.getElementById("text").value)) {
+                    alert("Special character detected.")
+                }
+            }
+
+            function addText() {
+                const header = document.querySelector("h1")
+                header.textContent = header.textContent + " Add Text";
+            }
+        </script>
+    </body>
+</html>
